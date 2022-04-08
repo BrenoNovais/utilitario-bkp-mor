@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
-    "install-pacotes": "npm install && npm install pm2 -g && npm install pm2-windows-startup -g && npm run pm2",
+    "install-pacotes":
+     "npm install && npm install pm2 -g && npm install pm2-windows-startup -g && pm2 start src/index.js --name verificaarquivos --watch src && pm2 save",
     "pm2": "pm2 start src/index.js --name verificaarquivos --watch src"
   },
   "author": "NicolasBonnefont",
