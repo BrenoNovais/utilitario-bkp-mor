@@ -1,11 +1,8 @@
-# Instalar o NODE ultima versão disponível
+# Instalar o NodeJs ultima versão disponível https://nodejs.org/en/download/
 # Instalar o GIT: https://git-scm.com/download/win
  
-# Instale pacote por pacote, 1 de cada vez
-# Na raiz do projeto, executar o comando no terminal: npm install
-# Na raiz do projeto, executar o comando no terminal: npm install pm2 -g
-# Na raiz do projeto, executar o comando no terminal: npm install pm2-windows-startup -g
-# Na raiz do projeto, executar o comando no terminal: pm2-startup install
+# Rodar o instalador.bat
+# Colocar o atualizador.bat no agendador de tarefas 1x por dia
 
 # Antes de continuar :
   - Cria um arquivo ".env" com as variáveis de ambiente conforme exemplo:
@@ -21,15 +18,13 @@
   - O arquivo ".env" deve estar na mesma pasta do projeto.
   - Verifica e confirme se no .env DIRETORIO_BKP está com a barra no FINAL !!!
   - Checar se no .env DIRETORIO_BKP esta certingo o caminho para nao apagar arquivos errados !!!
-  
-# Na raiz do projeto, executar o comando no terminal: npm run dev
-  - Este comando vai inicializar o serviço e se tudo der ok, vai apresentar
-      "Monitoramento de BKP MOR..."
-      "Diretorio limpo com sucesso !" 
+ 
+# Para testar se esta tudo ok, rode no terminal do windows:
+    pm2 monit
 
-# Estadando tudo ok:
-  - Na raiz do projeto, executar o comando no terminal: pm2 start ./src/index.js
-  -  Na raiz do projeto, executar o comando no terminal: pm2 save
+# Se mostrar na tela o processo com o nome " VerificadorMOR ", então está tudo ok.
+
+--fim
 
 
 
