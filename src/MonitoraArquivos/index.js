@@ -26,7 +26,7 @@ function Monitorar() {
         hora_arquivo: String(new Date(mtime).getHours()),
         minuto_arquivo: String(new Date(mtime).getMinutes()),
         tamanho_arquivo: fileSize(size),
-        caminho_completo: String(path.resolve(novo_arquivo))
+        caminho_completo_arquivo: String(path.resolve(novo_arquivo))
       }, { auth })
         .then(response => {
           console.log(response?.data)
