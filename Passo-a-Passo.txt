@@ -1,5 +1,7 @@
 # Instalar o NODE ultima versão disponível
-
+# Instalar o GIT: https://git-scm.com/download/win
+ 
+# Instale pacote por pacote, 1 de cada vez
 # Na raiz do projeto, executar o comando no terminal: npm install
 # Na raiz do projeto, executar o comando no terminal: npm install pm2 -g
 # Na raiz do projeto, executar o comando no terminal: npm install pm2-windows-startup -g
