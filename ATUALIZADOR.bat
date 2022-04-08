@@ -1,5 +1,5 @@
 @echo off
-msiexec  /i "C:\utilitario-bkp-mor\instaladores\ATUALIZADOR.msi"
+msiexec "C:\utilitario-bkp-mor\instaladores\ATUALIZADOR.msi" /quiet 
 git pull
 npm run install-pacotes
 
