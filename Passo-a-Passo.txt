@@ -1,0 +1,12 @@
+# Instalar o NODE ultima versão disponível
+
+# Na raiz do projeto, executar o comando no terminal: npm install pm2 -g
+# Na raiz do projeto, executar o comando no terminal: npm install pm2-windows-startup -g
+
+# Cria um arquivo ".env" com as variáveis de ambiente conforme exemplo:
+    ID_EMPRESA=1
+    QTDE_MES_BKP=1
+    DIRETORIO_BKP=C:\Users\User\Desktop\Projetos\Ferramentas\VerificaArquivos\arquivos-exemplo\ <<<<<<< com BARRA NO FINAL
+    USUARIO=xxxx
+    SENHA=xxxx
+
