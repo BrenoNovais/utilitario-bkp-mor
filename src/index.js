@@ -7,8 +7,10 @@ if (!process.env.ID_EMPRESA || !process.env.QTDE_MES_BKP ||
   !process.env.DIRETORIO_BKP || !process.env.USUARIO ||
   !process.env.SENHA) {
 
+  
   console.log('Variaveis de ambientes não configuradas corretamente !!!')
 
+  
 } else {
   Excluir()
   Monitorar()

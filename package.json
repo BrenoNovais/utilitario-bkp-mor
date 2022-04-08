@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "pm2": "pm2 start src/index.js --name verificaarquivos --watch src"
   },
   "author": "NicolasBonnefont",
   "license": "ISC",
