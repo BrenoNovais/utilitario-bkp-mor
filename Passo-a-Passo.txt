@@ -1,7 +1,7 @@
 # Instalar o NodeJs ultima versão disponível https://nodejs.org/en/download/
 # Instalar o GIT: https://git-scm.com/download/win
  
-# Rodar o instalador.bat
+# Rodar o atualizador.bat
 # Colocar o atualizador.bat no agendador de tarefas 1x por dia
 
 # Antes de continuar :
