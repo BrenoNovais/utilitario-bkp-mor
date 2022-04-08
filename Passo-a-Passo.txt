@@ -2,11 +2,31 @@
 
 # Na raiz do projeto, executar o comando no terminal: npm install pm2 -g
 # Na raiz do projeto, executar o comando no terminal: npm install pm2-windows-startup -g
+# Na raiz do projeto, executar o comando no terminal: pm2-startup install
 
-# Cria um arquivo ".env" com as variáveis de ambiente conforme exemplo:
-    ID_EMPRESA=1
-    QTDE_MES_BKP=1
-    DIRETORIO_BKP=C:\Users\User\Desktop\Projetos\Ferramentas\VerificaArquivos\arquivos-exemplo\ <<<<<<< com BARRA NO FINAL
-    USUARIO=xxxx
-    SENHA=xxxx
+# Antes de continuar :
+  - Cria um arquivo ".env" com as variáveis de ambiente conforme exemplo:
+      ID_EMPRESA=1  <<< --- ID da empresa Gerado pelo o sistema de Backup anteriormente !
+      QTDE_MES_BKP=1 <<< --- Quantidade de meses de backup na pasta
+      DIRETORIO_BKP=C:\Users\User\Desktop\Projetos\Ferramentas\VerificaArquivos\arquivos-exemplo\ <<<<<<< com BARRA NO FINAL
+      USUARIO=xxxx
+      SENHA=xxxx
+
+# Atenção !!!!!
+  - Antes de iniciar o serviço, é necessário que o arquivo ".env" esteja
+      com as variáveis de ambiente preenchidas.
+  - O arquivo ".env" deve estar na mesma pasta do projeto.
+  - Verifica e confirme se no .env DIRETORIO_BKP está com a barra no FINAL !!!
+  - Checar se no .env DIRETORIO_BKP esta certingo o caminho para nao apagar arquivos errados !!!
+  
+# Na raiz do projeto, executar o comando no terminal: npm run dev
+  - Este comando vai inicializar o serviço e se tudo der ok, vai apresentar
+      "Monitoramento de BKP MOR..."
+      "Diretorio limpo com sucesso !" 
+
+# Estadando tudo ok:
+  - Na raiz do projeto, executar o comando no terminal: pm2 start ./src/index.js
+  -  Na raiz do projeto, executar o comando no terminal: pm2 save
+
+
 
