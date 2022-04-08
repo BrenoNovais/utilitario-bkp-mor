@@ -1,2 +1,2 @@
-# Instalção
+# Instalação
 - Node / pm2
