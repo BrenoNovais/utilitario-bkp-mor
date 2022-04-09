@@ -44,10 +44,11 @@ async function RemoveArquivoEmMeses(mes) {
     //Se a diferença for maior que 1 mes, remove o arquivo
     if (diferenca_mes > Number(mes)) {
       fs.unlinkSync(arquivos[arquivo])
+      console.log('Diretorio limpo com sucesso !')
     }
   }
 
-  console.log('Diretorio limpo com sucesso !')
+  
 
   return arquivos;
 }
