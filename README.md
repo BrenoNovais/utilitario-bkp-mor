@@ -20,7 +20,7 @@
       com as variáveis de ambiente preenchidas.
   - O arquivo ".env" deve estar na mesma pasta do projeto.
   - Verifica e confirme se no .env DIRETORIO_BKP está com a barra no FINAL !!!
-  - Checar se no .env DIRETORIO_BKP esta certingo o caminho para nao apagar arquivos errados !!!
+  - Checar se no .env DIRETORIO_BKP esta certinho o caminho para nao apagar arquivos errados !!!
  
 # Para testar se esta tudo ok, rode no terminal do windows:
     pm2 monit
