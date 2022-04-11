@@ -23,7 +23,7 @@ function Monitorar() {
         id_empresa: id_empresa,
         nome_arquivo: nome_arquivo,
         data_arquivo: new Date(mtime).toLocaleDateString(),
-        hora_arquivo: String(new Date(mtime).getHours()),
+        hora_arquivo: new Date(mtime).toLocaleTimeString(),
         minuto_arquivo: String(new Date(mtime).getMinutes()),
         tamanho_arquivo: fileSize(size),
         caminho_completo_arquivo: String(path.resolve(novo_arquivo))
