@@ -1,8 +1,10 @@
-# Instalar o NodeJs ultima versão disponível https://nodejs.org/en/download/
-# Instalar o GIT: https://git-scm.com/download/win
+# Instalar o NodeJs ultima versão disponível
+ - https://nodejs.org/en/download/
+# Instalar o GIT: 
+ - https://git-scm.com/download/win
  
 # Rodar o atualizador.bat
-# Colocar o atualizador.bat no agendador de tarefas 1x por dia
+ - Colocar o atualizador.bat no agendador de tarefas 1x por dia
 
 # Antes de continuar :
   - Cria um arquivo ".env" com as variáveis de ambiente conforme exemplo:
@@ -12,7 +14,7 @@
       USUARIO=xxxx
       SENHA=xxxx
 
-# Atenção !!!!!
+# Atenção !!!
   - Antes de iniciar o serviço, é necessário que o arquivo ".env" esteja
       com as variáveis de ambiente preenchidas.
   - O arquivo ".env" deve estar na mesma pasta do projeto.
