@@ -1,6 +1,6 @@
 # Instalar o NodeJs ultima versão disponível
  - https://nodejs.org/en/download/
- 
+
 # Instalar o GIT: 
  - https://git-scm.com/download/win
  
@@ -9,11 +9,11 @@
 
 # Antes de continuar :
   - Cria um arquivo ".env" com as variáveis de ambiente conforme exemplo:
-      ID_EMPRESA=1  <<< --- ID da empresa Gerado pelo o sistema de Backup anteriormente !
-      QTDE_MES_BKP=1 <<< --- Quantidade de meses de backup na pasta
-      DIRETORIO_BKP=C:\Users\User\Desktop\Projetos\Ferramentas\VerificaArquivos\arquivos-exemplo\ <<<<<<< com BARRA NO FINAL
-      USUARIO=xxxx
-      SENHA=xxxx
+      - ID_EMPRESA=1  <<< --- ID da empresa Gerado pelo o sistema de Backup anteriormente !
+      - QTDE_MES_BKP=1 <<< --- Quantidade de meses de backup na pasta
+      - DIRETORIO_BKP=C:\Users\User\Desktop\Projetos\Ferramentas\VerificaArquivos\arquivos-exemplo\ <<<<<<< com BARRA NO FINAL
+      - USUARIO=xxxx
+      - SENHA=xxxx
 
 # Atenção !!!
   - Antes de iniciar o serviço, é necessário que o arquivo ".env" esteja
