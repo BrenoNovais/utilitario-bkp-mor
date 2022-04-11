@@ -1,5 +1,6 @@
 # Instalar o NodeJs ultima versão disponível
  - https://nodejs.org/en/download/
+ 
 # Instalar o GIT: 
  - https://git-scm.com/download/win
  
