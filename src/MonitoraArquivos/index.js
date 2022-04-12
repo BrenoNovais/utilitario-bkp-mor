@@ -34,7 +34,7 @@ function Monitorar() {
         return
       }
 
-      setTimeout(async () => {
+  
         await api.post('/bkps', {
           id_empresa: id_empresa,
           nome_arquivo: nome_arquivo,
@@ -52,8 +52,6 @@ function Monitorar() {
           })
 
       })
-    }, segundos * 10);
-
 
 
 
