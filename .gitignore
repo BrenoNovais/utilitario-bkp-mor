@@ -1,3 +1,5 @@
 node_modules
 arquivos-exemplo/*
 .env
+.package-lock.json
+
