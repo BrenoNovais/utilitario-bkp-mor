@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
-    "install-pacotes": "npm install && npm install pm2 -g && npm install pm2-windows-startup -g && pm2 start src/index.js --name VerificadorMOR && pm2 save"
+    "install-pacotes": "npm install && npm install pm2 -g && npm install pm2-windows-startup -g && pm2 stop all && pm2 start src/index.js --name VerificadorMOR && pm2 save"
   },
   "author": "NicolasBonnefont",
   "license": "ISC",
