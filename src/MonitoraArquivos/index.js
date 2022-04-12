@@ -45,8 +45,8 @@ function Monitorar() {
         .then(response => {
           console.log('Bkp do arquivo: ' + String(nome_arquivo) + ' realizado com sucesso ! :)')
         })
-        .then(error => {
-        
+        .catch(error => {
+          console.log(error)
         })
 
     })
