@@ -8,7 +8,6 @@ const auth = {
   username: process.env.USUARIO,
   password: process.env.SENHA
 }
-const segundos = 1000;
 
 function Monitorar() {
   let watcher = chokidar.watch(process.env.DIRETORIO_BKP, {
@@ -17,7 +16,7 @@ function Monitorar() {
       stabilityThreshold: 2000,
       pollInterval: 100
     },
-    ignorePermissionErrors: false,
+    ignorePermissionErrors: true,
     atomic: true
   })
 
@@ -34,26 +33,23 @@ function Monitorar() {
         return
       }
 
-  
-        await api.post('/bkps', {
-          id_empresa: id_empresa,
-          nome_arquivo: nome_arquivo,
-          data_arquivo: new Date(mtime).toLocaleDateString(),
-          hora_arquivo: new Date(mtime).toLocaleTimeString(),
-          minuto_arquivo: String(new Date(mtime).getMinutes()),
-          tamanho_arquivo: fileSize(size),
-          caminho_completo_arquivo: String(path.resolve(novo_arquivo))
-        }, { auth })
-          .then(response => {
-            console.log('Bkp do arquivo: ' + String(nome_arquivo) + ' realizado com sucesso ! :)')
-          })
-          .then(error => {
+      await api.post('/bkps', {
+        id_empresa: id_empresa,
+        nome_arquivo: nome_arquivo,
+        data_arquivo: new Date(mtime).toLocaleDateString(),
+        hora_arquivo: new Date(mtime).toLocaleTimeString(),
+        minuto_arquivo: String(new Date(mtime).getMinutes()),
+        tamanho_arquivo: fileSize(size),
+        caminho_completo_arquivo: String(path.resolve(novo_arquivo))
+      }, { auth })
+        .then(response => {
+          console.log('Bkp do arquivo: ' + String(nome_arquivo) + ' realizado com sucesso ! :)')
+        })
+        .then(error => {
+          console.log(error)
+        })
 
-          })
-
-      })
-
-
+    })
 
 }
 
