@@ -20,26 +20,30 @@ function Monitorar() {
       const extensao_arquivo = path.extname(novo_arquivo)
       const id_empresa = process.env.ID_EMPRESA
 
-      if(extensao_arquivo != '.bkm'){
+      if (extensao_arquivo != '.bkm') {
         console.log('Arquivo não bkm ignorado !')
-        return 
+        return
       }
 
-      await api.post('/bkps', {
-        id_empresa: id_empresa,
-        nome_arquivo: nome_arquivo,
-        data_arquivo: new Date(mtime).toLocaleDateString(),
-        hora_arquivo: new Date(mtime).toLocaleTimeString(),
-        minuto_arquivo: String(new Date(mtime).getMinutes()),
-        tamanho_arquivo: fileSize(size),
-        caminho_completo_arquivo: String(path.resolve(novo_arquivo))
-      }, { auth })
-        .then(response => {
-          console.log('Bkp do arquivo: ' + String(nome_arquivo) + ' realizado com sucesso ! :)'  )
-        })
-        .then(error => {
-         
-        })
+      setTimeout(() => {
+        await api.post('/bkps', {
+          id_empresa: id_empresa,
+          nome_arquivo: nome_arquivo,
+          data_arquivo: new Date(mtime).toLocaleDateString(),
+          hora_arquivo: new Date(mtime).toLocaleTimeString(),
+          minuto_arquivo: String(new Date(mtime).getMinutes()),
+          tamanho_arquivo: fileSize(size),
+          caminho_completo_arquivo: String(path.resolve(novo_arquivo))
+        }, { auth })
+          .then(response => {
+            console.log('Bkp do arquivo: ' + String(nome_arquivo) + ' realizado com sucesso ! :)')
+          })
+          .then(error => {
+
+          })
+      }, 3000)
+
+
 
     })
 
