@@ -13,7 +13,7 @@ function Monitorar() {
   let watcher = chokidar.watch(process.env.DIRETORIO_BKP, { ignoreInitial: true })
 
   watcher
-    .on('add', async novo_arquivo => {
+    .on('', async novo_arquivo => {
 
       const { size, mtime } = fs.statSync(novo_arquivo);
       const nome_arquivo = path.basename(novo_arquivo);
@@ -32,7 +32,7 @@ function Monitorar() {
           console.log('Bkp do arquivo' + nome_arquivo + ' registrado com sucesso 🚀')
         })
         .then(error => {
-          console.log('Problema no bkp...')
+         
         })
 
     })
