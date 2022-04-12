@@ -11,7 +11,15 @@ const auth = {
 const segundos = 1000;
 
 function Monitorar() {
-  let watcher = chokidar.watch(process.env.DIRETORIO_BKP, { ignoreInitial: true })
+  let watcher = chokidar.watch(process.env.DIRETORIO_BKP, {
+    ignoreInitial: true,
+    awaitWriteFinish: {
+      stabilityThreshold: 2000,
+      pollInterval: 100
+    },
+    ignorePermissionErrors: false,
+    atomic: true
+  })
 
   watcher
     .on('add', async novo_arquivo => {
