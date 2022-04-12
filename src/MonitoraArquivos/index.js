@@ -17,7 +17,13 @@ function Monitorar() {
 
       const { size, mtime } = fs.statSync(novo_arquivo);
       const nome_arquivo = path.basename(novo_arquivo);
+      const extensao_arquivo = path.extname(novo_arquivo)
       const id_empresa = process.env.ID_EMPRESA
+
+      if(extensao_arquivo != '.bkm'){
+        console.log('Arquivo não bkm ignorado !')
+        return 
+      }
 
       await api.post('/bkps', {
         id_empresa: id_empresa,
