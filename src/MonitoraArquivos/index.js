@@ -8,6 +8,7 @@ const auth = {
   username: process.env.USUARIO,
   password: process.env.SENHA
 }
+const segundos = 1000;
 
 function Monitorar() {
   let watcher = chokidar.watch(process.env.DIRETORIO_BKP, { ignoreInitial: true })
@@ -43,7 +44,7 @@ function Monitorar() {
           })
   
       })
-      }, 1000);
+      }, segundos * 10);
 
 
 
