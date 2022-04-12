@@ -29,7 +29,7 @@ function Monitorar() {
         caminho_completo_arquivo: String(path.resolve(novo_arquivo))
       }, { auth })
         .then(response => {
-          console.log('Bkp do arquivo' + String(nome_arquivo) + ' realizado com sucesso 🚀'  )
+          console.log('Bkp do arquivo: ' + String(nome_arquivo) + ' realizado com sucesso ! :)'  )
         })
         .then(error => {
          
