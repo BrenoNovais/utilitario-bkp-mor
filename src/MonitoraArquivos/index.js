@@ -13,7 +13,7 @@ function Monitorar() {
   let watcher = chokidar.watch(process.env.DIRETORIO_BKP, { ignoreInitial: true })
 
   watcher
-    .on('', async novo_arquivo => {
+    .on('add', async novo_arquivo => {
 
       const { size, mtime } = fs.statSync(novo_arquivo);
       const nome_arquivo = path.basename(novo_arquivo);
