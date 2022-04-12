@@ -21,9 +21,9 @@ function Monitorar() {
       const extensao_arquivo = path.extname(novo_arquivo)
       const id_empresa = process.env.ID_EMPRESA
 
-      if(extensao_arquivo != '.bkm'){
+      if (extensao_arquivo != '.bkm') {
         console.log('Arquivo não bkm ignorado !')
-        return 
+        return
       }
 
       setTimeout(async () => {
@@ -37,14 +37,14 @@ function Monitorar() {
           caminho_completo_arquivo: String(path.resolve(novo_arquivo))
         }, { auth })
           .then(response => {
-            console.log('Bkp do arquivo: ' + String(nome_arquivo) + ' realizado com sucesso ! :)'  )
+            console.log('Bkp do arquivo: ' + String(nome_arquivo) + ' realizado com sucesso ! :)')
           })
           .then(error => {
-           
+
           })
-  
+
       })
-      }, segundos * 10);
+    }, segundos * 10);
 
 
 
