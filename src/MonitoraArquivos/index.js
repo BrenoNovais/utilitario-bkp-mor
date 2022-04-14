@@ -13,8 +13,8 @@ function Monitorar() {
   let watcher = chokidar.watch(process.env.DIRETORIO_BKP, {
     ignoreInitial: true,
     awaitWriteFinish: {
-      stabilityThreshold: 2000,
-      pollInterval: 100
+      stabilityThreshold: 10000,
+      pollInterval: 1000
     },
     ignorePermissionErrors: true,
     atomic: true
