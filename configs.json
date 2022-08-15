@@ -1,0 +1,15 @@
+{
+    "ID_EMPRESA": "1",
+    "QTDE_MES_BKP": "1",
+    "DIRETORIO_BKP": "C:/Users/Notebook/Desktop/arquivos-exemplo",
+    "USUARIO": "usuario1",
+    "SENHA": "usuario2",
+    "USER": "root",
+    "PASSWORD": "numsey",
+    "DATABASE": "cadastro",
+    "TEMP": "C:/teste/banco.sql",
+    "TEMPFILE": "banco.sql",
+    "FILE": "empresa.sql",    
+    "ZIP_PASSWORD": "senhateste" 
+    
+}
