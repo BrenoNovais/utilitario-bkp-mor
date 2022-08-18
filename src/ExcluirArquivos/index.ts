@@ -1,11 +1,14 @@
 import { promises as fs_promise } from 'fs';
 import fs from 'fs'
-import fns from 'date-fns'
+import { differenceInMonths } from 'date-fns'
+import BuscaConfigs from '../services/buscaConfigs';
 
 const segundos = 1000;
 const minutos = segundos * 60;
 const horas = minutos * 60;
 const dia = horas * 24;
+
+const configs = BuscaConfigs()
 
 async function ListarArquivosDoDiretorio(diretorio: any, arquivo?: any) {
 
@@ -30,7 +33,7 @@ async function ListarArquivosDoDiretorio(diretorio: any, arquivo?: any) {
 
 async function RemoveArquivoEmMeses(mes?: any) {
 
-  let arquivos = await ListarArquivosDoDiretorio(process.env.DIRETORIO_BKP); // coloque o caminho do seu diretorio
+  let arquivos = await ListarArquivosDoDiretorio(configs.DIRETORIO_BKP); // coloque o caminho do seu diretorio
 
   for (let arquivo in arquivos) {
 
@@ -38,7 +41,7 @@ async function RemoveArquivoEmMeses(mes?: any) {
     const { mtime } = fs.statSync(arquivos[arquivo]);
 
     //Retorna valor inteiro quando a diferença entre os meses
-    const diferenca_mes = fns.differenceInMonths(new Date(), new Date(mtime))
+    const diferenca_mes = differenceInMonths(new Date(), new Date(mtime))
 
     //Se a diferença for maior que 1 mes, remove o arquivo
     if (diferenca_mes > Number(mes)) {
@@ -52,10 +55,8 @@ async function RemoveArquivoEmMeses(mes?: any) {
 //Intervalor em dias para verificar os aquivos
 setInterval(() => {
   //Passa como parametro numero em meses
-  RemoveArquivoEmMeses(process.env.QTDE_MES_BKP);
+  RemoveArquivoEmMeses(configs.QTDE_MES_BKP);
   
 }, dia * 1);
-
-
 
 export {ListarArquivosDoDiretorio, RemoveArquivoEmMeses}

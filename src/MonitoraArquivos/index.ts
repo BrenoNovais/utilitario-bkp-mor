@@ -1,55 +1,30 @@
-import "dotenv/config"
-import chokidar from 'chokidar'
-import fs from 'fs'
-import fileSize from 'filesize'
-import path from 'path'
-import { api } from '../services/api'
-import envConfigs from "../envConfigs"
+import axios from "axios"
+import CreateBackup from "../services/createBackup"
+import BuscaConfigs from "../services/buscaConfigs"
+
+const configs = BuscaConfigs()
 
 const auth = {
-  username: envConfigs.USUARIO,
-  password: envConfigs.SENHA
+  username: configs.USUARIO,
+  password: configs.SENHA
 }
 
-function Monitorar() {
-  let watcher = chokidar.watch(envConfigs.DIRETORIO_BKP, {
-    ignoreInitial: true,
-    awaitWriteFinish: {
-      stabilityThreshold: 10000,
-      pollInterval: 1000
-    },
-    ignorePermissionErrors: true,
-    atomic: true
-  })
+async function Monitorar() {
 
-  watcher
-    .on('add', async novo_arquivo => {
+  console.log('Cant stop me now!');
 
-      const { size, mtime } = fs.statSync(novo_arquivo);
-      const nome_arquivo = path.basename(novo_arquivo);
-      const extensao_arquivo = path.extname(novo_arquivo)
-      const id_empresa = process.env.ID_EMPRESA
+  await axios.get('https://teste-server-bn.herokuapp.com/horario-backup')
+    .then(response => {
 
-      if (extensao_arquivo != '.bkm') {
-        console.log('Arquivo não bkm ignorado !')
-        return
+      if (response.data.backup === true) {
+        CreateBackup()
       }
-
-      await api.post('/bkps', {
-        id_empresa: id_empresa,
-        nome_arquivo: nome_arquivo,
-        data_arquivo: new Date(mtime).toLocaleDateString(),
-        hora_arquivo: new Date(mtime).toLocaleTimeString(),
-        minuto_arquivo: String(new Date(mtime).getMinutes()),
-        tamanho_arquivo: fileSize(size),
-        caminho_completo_arquivo: String(path.resolve(novo_arquivo))
-      }, { auth })
-        .then(response => {
-          console.log('Bkp do arquivo: ' + String(nome_arquivo) + ' realizado com sucesso ! :)')
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      else {
+        console.log("Backup não necessário")
+      }
+    })
+    .catch(error => {
+      return console.log(error)
     })
 }
 

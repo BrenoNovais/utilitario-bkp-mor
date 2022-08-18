@@ -1,3 +1,5 @@
+import { EnviaBackup } from "./enviaBackup";
+
 var fs = require('fs');
 const archiver = require('archiver')
 archiver.registerFormat('zip-encrypted', require("archiver-zip-encrypted"))
@@ -5,7 +7,7 @@ const os = require('os');
 
 
 //-----------------DESTINO,---SENHA,----ARQUIVO------------------\\
-export function encrypt({ content,  password,  file}: any) {
+export async function encrypt({ content,  password,  file}: any) {
 
     const url_temp = os.tmpdir() + '/temp.sql'
 
@@ -19,7 +21,9 @@ export function encrypt({ content,  password,  file}: any) {
 
     archive.file(file)
 
-    archive.finalize()
+    await archive.finalize()
+
+    EnviaBackup()
 
     console.log('arquivo encriptado. . .')
 
@@ -30,7 +34,7 @@ export function encrypt({ content,  password,  file}: any) {
         }
     }));
 
-    return 
+    return
 }
 
 export default encrypt
