@@ -1,6 +1,7 @@
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
+import configsType from '../../@types/configsType'
 
 export function BuscaConfigs() {
 
@@ -10,9 +11,10 @@ export function BuscaConfigs() {
     //LE O .JSON E TRANSFORMA EM STRING
     const info_configs = JSON.parse(String(busca_configs))
 
-    const url_temp = os.tmpdir() + '/temp.sql'
+    const url_temp = os.tmpdir()
+    
 
-    const retorno = {
+    const retorno: configsType = {
         ...info_configs,
         URL_TEMP: url_temp
     }

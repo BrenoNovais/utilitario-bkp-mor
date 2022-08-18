@@ -1,22 +1,25 @@
 import fs from "fs"
-import  BuscaConfigs  from "./buscaConfigs";
+import BuscaConfigs from "./buscaConfigs";
 const os = require('os');
-import DumpDatabase from "./dump"
-import encrypt from "./encryptedArchiver"
+import encrypt from "./encryptBackup"
+import path from 'path'
+const execa = require('execa')
+const configs = BuscaConfigs()
 
 async function CreateBackup() {
 
-    const configs = BuscaConfigs()
-
     //FUNÇÃO QUE CRIA O DUMP COM AS INFORMAÇÕES DO CONFIG
-    await DumpDatabase(configs.USER, configs.PASSWORD, configs.DATABASE, configs.URL_TEMP)
+    await execa(`mysqldump -u${configs.USER} -p${configs.PASSWORD} --databases ${configs.DATABASE} --result-file=${`${configs.URL_TEMP}/${configs.NOME_EMPRESA}`}.sql`);
+    console.log('dump criado. . .')
 
     //FUNÇÃO QUE CRIA O .ZIP COM SENHA
-    encrypt({
-        content: fs.createWriteStream(`${configs.DIRETORIO_BKP}/testedoconfig.zip`),
-        file: `${configs.FILENAME}`,
+    await encrypt({
+        //ONDE VAI SER SALVO O BKP
+        content: fs.createWriteStream(`${configs.DIRETORIO_BKP}/${configs.NOME_EMPRESA}.zip`),
+        // ARQUIVO DENTRO DO ZIP
+        file: `C:/Users/nicol/AppData/Local/Temp/almanara.sql`,
         password: configs.ZIP_PASSWORD, //SENHA PARA ACESSAR O .ZIP
-    }) 
-}
+    })
 
+}
 export default CreateBackup

@@ -47,4 +47,4 @@ if (!info_configs.ID_EMPRESA || !info_configs.QTDE_MES_BKP ||
 
 app.use(Routes)
 
-app.listen(3333)
+app.listen(3000)

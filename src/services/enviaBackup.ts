@@ -2,6 +2,8 @@ import axios from "axios";
 import fs from 'fs'
 import BuscaConfigs from "./buscaConfigs";
 import FormData from "form-data";
+import api from "./api";
+import path from 'path'
 
 export async function EnviaBackup() {
 
@@ -9,25 +11,32 @@ export async function EnviaBackup() {
 
     const data = new FormData()
 
-    data.append('usuario', configs.ID_EMPRESA)
-    data.append('anexo', fs.createReadStream(`C:/teste/Screenshot_2.jpg`))
+    console.log(path.resolve(`${configs.DIRETORIO_BKP}/${configs.NOME_EMPRESA}.zip`))
 
-    axios({
-        method: "post",
-        url: "https://bkps-mor.fly.dev/api/v1/bkps",
-        data: data,
+    data.append('id_empresa', configs.ID_EMPRESA)
+    data.append('anexo', fs.createReadStream(path.resolve(`${configs.DIRETORIO_BKP}/${configs.NOME_EMPRESA}.zip`)))
+
+    const auth = {
+        username: 'morinfo',
+        password: '@numsey1008'
+    }
+    
+
+    await api({
+        method: 'post',
+        url: '/bkps',
+        data,
         auth: {
             username: 'morinfo',
-            password: '@numsey1008'
-        }
+            password: "@numsey1008"
+        },
+        headers: data.getHeaders()
     })
-        .then(function (response) {
-            //handle success
-            console.log(response);
-        })
-        .catch(function (response) {
-            //handle error
-            console.log(response);
-        });
+    .then(response =>{
+        console.log(response)
+    })
+    .catch(error =>{
+        console.log(error.response)
+    })
 
 }
