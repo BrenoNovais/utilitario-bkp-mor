@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Verificar integridades dos arquivos de um diretorio especifico",
   "main": "index.js",
-  "bin": "build/index.js",
+  "bin": "build/src/index.js",
   "pkg": {
     "assets": [
       "build"

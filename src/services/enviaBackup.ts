@@ -11,20 +11,13 @@ export async function EnviaBackup() {
 
     const data = new FormData()
 
-    console.log(path.resolve(`${configs.DIRETORIO_BKP}/${configs.NOME_EMPRESA}.zip`))
-
     data.append('id_empresa', configs.ID_EMPRESA)
-    data.append('anexo', fs.createReadStream(path.resolve(`${configs.DIRETORIO_BKP}/${configs.NOME_EMPRESA}.zip`)))
 
-    const auth = {
-        username: 'morinfo',
-        password: '@numsey1008'
-    }
-    
+    data.append('anexo', fs.createReadStream(path.resolve(`${configs.DIRETORIO_BKP}/${configs.NOME_EMPRESA}.zip`)))
 
     await api({
         method: 'post',
-        url: '/bkps',
+        url: '/recebe-backup',
         data,
         auth: {
             username: 'morinfo',
@@ -33,10 +26,10 @@ export async function EnviaBackup() {
         headers: data.getHeaders()
     })
     .then(response =>{
-        console.log(response)
+        console.log('Salvo com sucesso')
     })
     .catch(error =>{
-        console.log(error.response)
+        console.log(error?.response ? error.response : 'Problema ao gerar o BKP')
     })
 
 }
