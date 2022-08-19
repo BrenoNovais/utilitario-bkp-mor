@@ -45,8 +45,8 @@ export async function encrypt(configs : configsType) {
 
         await archive.finalize() 
 
-        //await EnviaBackup(date)
-        await EnviaBackupTeste(date)
+        await EnviaBackup(date)
+        //await EnviaBackupTeste(date)
 
         fs.unlink(url, ((err: any) => {
             if (err) console.log(err);

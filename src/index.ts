@@ -3,6 +3,7 @@ import Routes from './Routes'
 import Monitorar from "./MonitoraArquivos"
 import BuscaConfigs from "./services/buscaConfigs"
 
+
 const segundos = 1000;
 const minutos = segundos * 60;
 const horas = minutos * 60;
@@ -24,7 +25,6 @@ async function start() {
 
     }, segundos * 30)
 
-    const configs = await BuscaConfigs()
 }
 
 start()
