@@ -3,12 +3,12 @@ import fs from 'fs'
 import { differenceInMonths } from 'date-fns'
 import BuscaConfigs from '../services/buscaConfigs';
 
+const configs = BuscaConfigs()
+
 const segundos = 1000;
 const minutos = segundos * 60;
 const horas = minutos * 60;
 const dia = horas * 24;
-
-const configs = BuscaConfigs()
 
 async function ListarArquivosDoDiretorio(diretorio: any, arquivo?: any) {
 
@@ -33,10 +33,12 @@ async function ListarArquivosDoDiretorio(diretorio: any, arquivo?: any) {
 
 async function RemoveArquivoEmMeses(mes?: any) {
 
-  let arquivos = await ListarArquivosDoDiretorio(configs.DIRETORIO_BKP); // coloque o caminho do seu diretorio
+  
+
+  let arquivos = await ListarArquivosDoDiretorio(configs.diretorio_bkp); // coloque o caminho do seu diretorio
 
   for (let arquivo in arquivos) {
-
+    
     //Pega a data de criação do arquivo
     const { mtime } = fs.statSync(arquivos[arquivo]);
 
@@ -55,7 +57,7 @@ async function RemoveArquivoEmMeses(mes?: any) {
 //Intervalor em dias para verificar os aquivos
 setInterval(() => {
   //Passa como parametro numero em meses
-  RemoveArquivoEmMeses(configs.QTDE_MES_BKP);
+  RemoveArquivoEmMeses(configs.qtde_mes_bkp);
   
 }, dia * 1);
 

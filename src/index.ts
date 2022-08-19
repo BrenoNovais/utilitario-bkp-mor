@@ -1,9 +1,7 @@
-import fs from "fs"
-import path from "path"
 import express from 'express'
 import Routes from './Routes'
-import { ListarArquivosDoDiretorio, RemoveArquivoEmMeses } from "./ExcluirArquivos"
 import Monitorar from "./MonitoraArquivos"
+import BuscaConfigs from "./services/buscaConfigs"
 
 const segundos = 1000;
 const minutos = segundos * 60;
@@ -16,34 +14,20 @@ app.use(express.json())
 
 console.log('Iniciando. . .')
 
-console.log(new Date())
+async function start() {
 
-//BUSCA ARQUIVO CONFIG.JSON
-let busca_configs = fs.readFileSync(path.resolve((path.resolve() + '/configs.json')))
+    setInterval(async () => {
 
-//LE O .JSON E TRANSFORMA EM STRING
-const info_configs = JSON.parse(String(busca_configs))
+        const configs = await BuscaConfigs()
 
-if (!info_configs.ID_EMPRESA || !info_configs.QTDE_MES_BKP ||
-    !info_configs.DIRETORIO_BKP || !info_configs.USUARIO ||
-    !info_configs.SENHA) {
+        Monitorar(configs)
 
-    console.log('Variaveis de ambientes não configuradas corretamente !!!')
+    }, segundos * 30)
 
-} else {
-
-    RemoveArquivoEmMeses()
-
-    ListarArquivosDoDiretorio(info_configs.DIRETORIO_BKP)
-
-    /* setInterval(() => {
-        Monitorar()
-    }, minutos * 10) */
-
-    Monitorar()
-
-    console.log('Monitoramento de BKP MOR inicializado ! ')
+    const configs = await BuscaConfigs()
 }
+
+start()
 
 app.use(Routes)
 

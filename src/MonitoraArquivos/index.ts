@@ -1,31 +1,22 @@
-import axios from "axios"
 import CreateBackup from "../services/createBackup"
-import BuscaConfigs from "../services/buscaConfigs"
+import configsType from "../../@types/configsType"
 
-const configs = BuscaConfigs()
+async function Monitorar(configs: configsType) {
 
-const auth = {
-  username: configs.USUARIO,
-  password: configs.SENHA
-}
+ try {
+  
+  if (configs.realiza_backup === false) {
+    
+    await CreateBackup(configs)
 
-async function Monitorar() {
+  } else {
+    console.log('backup não necessario!')
+    return 
+  }
 
-  console.log('Cant stop me now!');
-
-  await axios.get('https://teste-server-bn.herokuapp.com/horario-backup')
-    .then(response => {
-
-      if (response.data.backup === true) {
-        CreateBackup()
-      }
-      else {
-        console.log("Backup não necessário")
-      }
-    })
-    .catch(error => {
-      return console.log(error)
-    })
+ } catch (error) {
+  console.log(error)
+ }
 }
 
 export default Monitorar

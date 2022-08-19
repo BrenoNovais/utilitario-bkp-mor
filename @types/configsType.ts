@@ -1,17 +1,17 @@
 
-type configsType = {
-  ID_EMPRESA: string,
-  NOME_EMPRESA: string,
-  QTDE_MES_BKP: string
-  DIRETORIO_BKP: string
-  USUARIO: string
-  SENHA: string
-  USER: string
-  PASSWORD: string
-  DATABASE: string
-  TEMP: string
-  ZIP_PASSWORD: string,
-  URL_TEMP: string
+type configsType ={
+  id_empresa: string,
+  nome: string,
+  qtde_mes_bkp: string
+  diretorio_bkp: string
+  user: string
+  password: string
+  db_name: string
+  db_user: string
+  db_password: string
+  temp: string
+  url_temp: string,
+  realiza_backup: boolean
 }
 
 export default configsType

@@ -4,23 +4,20 @@ import FormData from "form-data";
 import api from "./api";
 import path from 'path'
 
-export async function EnviaBackup(date: String) {
+export async function EnviaBackupTeste(date: string) {
 
     const configs = await BuscaConfigs()
 
     const data = new FormData()
+    date
 
-    data.append('id_empresa', configs.id_empresa)
+    data.append('id_tenant', configs.id_empresa)
     data.append('anexo', fs.createReadStream(path.resolve(`${configs.diretorio_bkp}/${configs.nome}${date}.zip`)))
 
     await api({
         method: 'post',
-        url: 'https://bkps-mor.fly.dev/api/v1/bkps',
+        url: 'https://teste-server-bn.herokuapp.com/recebe-backup',
         data,
-        auth: {
-            username: 'morinfo',
-            password: "@numsey1008"
-        },
         headers: data.getHeaders()
     })
     .then(response =>{
@@ -34,4 +31,4 @@ export async function EnviaBackup(date: String) {
 
 }
 
-export default EnviaBackup
+export default EnviaBackupTeste
