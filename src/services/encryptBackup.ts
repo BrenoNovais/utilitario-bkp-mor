@@ -43,7 +43,7 @@ export async function encrypt(configs : configsType) {
         //add o arquivo no zip
         archive.file(file, { name: `${configs.nome}.sql` });
 
-        await archive.finalize()
+        await archive.finalize() 
 
         //await EnviaBackup(date)
         await EnviaBackupTeste(date)
